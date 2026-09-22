@@ -23,3 +23,9 @@ Utilizaremos las bases de datos del entorno de MEDICINA, para crear.... [ decidi
 
 # Estructura del repositorio
 
+- datos_originales/ → Dataset tal cual se descarga, sin tocar
+- datos_limpios/ → Dataset ya limpio, listo para analizar
+- analisis/ → Notebooks de exploración, pruebas y borradores
+- codigo/ → Funciones y scripts ya terminados y reutilizables
+- resultados/ → Gráficas finales, conclusiones y entrega
+
