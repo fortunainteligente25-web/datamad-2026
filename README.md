@@ -14,7 +14,7 @@ Utilizaremos las bases de datos del entorno de MEDICINA, para crear.... [ decidi
 - **Dataset(s) usado(s):
 - **Descripción breve:
 
-## 🛠️ Stack técnico
+## Stack técnico
 
 - Phyton
 - SQL
@@ -28,4 +28,7 @@ Utilizaremos las bases de datos del entorno de MEDICINA, para crear.... [ decidi
 - analisis/ → Notebooks de exploración, pruebas y borradores
 - codigo/ → Funciones y scripts ya terminados y reutilizables
 - resultados/ → Gráficas finales, conclusiones y entrega
+
+# Guía de Datamad
+[GUIA DATAMAD.docx](https://github.com/user-attachments/files/33908483/GUIA.DATAMAD.docx)
 
