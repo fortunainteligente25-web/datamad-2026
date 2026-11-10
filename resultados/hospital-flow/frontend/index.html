@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Te decimos a qué hospital ir según lo que te pasa, la cercanía y la saturación.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Hospital Flow">
+  <title>Hospital Flow</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Hospital Flow, inicio">
+        <span class="brand-mark"><i data-icon="heart-pulse"></i></span>
+        <span class="brand-name">Hospital Flow</span>
+      </a>
+      <a class="sos" href="tel:112" aria-label="Llamar al 112, emergencias">
+        <i data-icon="phone"></i><span>112</span>
+      </a>
+    </header>
+
+    <main id="contenido">
+      <!-- INICIO -->
+      <section id="v-inicio" class="vista" aria-labelledby="t-inicio">
+        <h1 id="t-inicio">¿Qué te pasa?</h1>
+        <p class="sub">Cuéntalo con tus palabras y te decimos a qué hospital ir.</p>
+
+        <form id="f-consulta" novalidate>
+          <label class="sr-only" for="mensaje">Describe qué te pasa</label>
+          <textarea id="mensaje" rows="3" maxlength="500" autocomplete="off"
+                    placeholder="Ej.: me he torcido el tobillo jugando al fútbol"></textarea>
+
+          <div class="chips" role="group" aria-label="Ejemplos">
+            <button type="button" class="chip" data-texto="Me he torcido el tobillo jugando al fútbol">Tobillo torcido</button>
+            <button type="button" class="chip" data-texto="Necesito operarme la rodilla">Operarme la rodilla</button>
+            <button type="button" class="chip" data-texto="Mi hija tiene fiebre alta desde ayer">Niña con fiebre</button>
+            <button type="button" class="chip" data-texto="Tengo tos y me cuesta respirar al subir escaleras">Tos y ahogo</button>
+          </div>
+
+          <div class="ubicacion">
+            <span class="ubic-icono"><i data-icon="map-pin"></i></span>
+            <div class="ubic-campo">
+              <label for="zona">Estás en</label>
+              <select id="zona"></select>
+            </div>
+            <button type="button" id="btn-gps" class="btn btn-ghost btn-sm">
+              <i data-icon="locate-fixed"></i><span>Usar GPS</span>
+            </button>
+          </div>
+
+          <button type="submit" id="btn-buscar" class="btn btn-primary btn-block">
+            <i data-icon="search"></i><span>Buscar hospital</span>
+          </button>
+        </form>
+
+        <p class="aviso"><i data-icon="triangle-alert"></i>
+          <span>Si crees que es una emergencia, llama al <a href="tel:112">112</a>.</span></p>
+      </section>
+
+      <!-- RESULTADO -->
+      <section id="v-resultado" class="vista" hidden aria-live="polite"></section>
+
+      <!-- MAPA -->
+      <section id="v-mapa" class="vista vista-mapa" hidden aria-label="Mapa de hospitales">
+        <div id="mapa" role="region" aria-label="Mapa"></div>
+        <div class="mapa-leyenda" aria-hidden="false">
+          <span class="muted">Ocupación</span>
+          <span><i class="dot dot-baja"></i>Baja</span>
+          <span><i class="dot dot-media"></i>Media</span>
+          <span><i class="dot dot-alta"></i>Alta</span>
+          <button type="button" id="btn-paradas" class="chip chip-sm" aria-pressed="false" hidden>
+            <i data-icon="car-taxi-front"></i>Paradas
+          </button>
+        </div>
+      </section>
+
+      <!-- CITAS -->
+      <section id="v-citas" class="vista" hidden aria-labelledby="t-citas"></section>
+
+      <!-- CONTACTOS -->
+      <section id="v-contactos" class="vista" hidden aria-labelledby="t-contactos"></section>
+    </main>
+
+    <nav class="tabbar" aria-label="Secciones">
+      <a href="#inicio" data-tab="inicio"><i data-icon="house"></i><span>Inicio</span></a>
+      <a href="#mapa" data-tab="mapa"><i data-icon="map"></i><span>Mapa</span></a>
+      <a href="#citas" data-tab="citas"><i data-icon="calendar-days"></i><span>Citas</span></a>
+      <a href="#contactos" data-tab="contactos"><i data-icon="users"></i><span>Contactos</span></a>
+    </nav>
+  </div>
+
+  <div class="sheet-fondo" hidden></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-titulo" hidden>
+    <div class="sheet-asa" aria-hidden="true"></div>
+    <button type="button" class="sheet-cerrar icon-btn" aria-label="Cerrar"><i data-icon="x"></i></button>
+    <div class="sheet-cuerpo"></div>
+  </div>
+  <div class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="vendor/leaflet/leaflet.js" defer></script>
+  <script src="iconos.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

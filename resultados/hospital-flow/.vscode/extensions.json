@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "rangav.vscode-thunder-client",
+    "mechatroner.rainbow-csv",
+    "ms-vsliveshare.vsliveshare"
+  ]
+}
